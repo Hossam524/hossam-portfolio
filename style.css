@@ -356,3 +356,11 @@ input:focus, textarea:focus{ border-color: rgba(46,229,157,.4); }
   .nav{ display:none; }
   .hide-sm{ display:none; }
 }
+.project .muted {
+  line-height: 1.8;
+  text-align: right;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;   /* عدد السطور */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
