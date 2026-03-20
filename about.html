@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>من هو الحسام حسن؟ | خبير تعليمي ومطور ذكاء اصطناعي</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-dark: #0f172a;
+        --accent-blue: #3b82f6;
+        --accent-purple: #8b5cf6;
+        --text-light: #f8fafc;
+        --text-muted: #94a3b8;
+        --card-bg: #1e293b;
+        --border-color: rgba(255, 255, 255, 0.1);
+        --glass: rgba(30, 41, 59, 0.7);
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--primary-dark);
+        color: var(--text-light);
+        font-family: "Tajawal", sans-serif;
+        line-height: 1.6;
+        background-image:
+          radial-gradient(
+            circle at 10% 20%,
+            rgba(59, 130, 246, 0.1) 0%,
+            transparent 40%
+          ),
+          radial-gradient(
+            circle at 90% 80%,
+            rgba(139, 92, 246, 0.1) 0%,
+            transparent 40%
+          );
+        background-attachment: fixed;
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .header {
+        padding: 40px 0;
+        text-align: center;
+      }
+
+      .grad-text {
+        background: linear-gradient(135deg, #60a5fa, #c084fc);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        color: transparent;
+        display: inline-block;
+        font-weight: 900;
+        font-size: 2.5rem;
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 30px;
+        margin-top: 20px;
+      }
+
+      .card {
+        background: var(--glass);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--border-color);
+        border-radius: 24px;
+        padding: 30px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .profile-card {
+        text-align: center;
+        height: fit-content;
+        position: sticky;
+        top: 30px;
+      }
+
+      .avatar-wrapper {
+        position: relative;
+        width: 160px;
+        height: 160px;
+        margin: 0 auto 20px;
+      }
+
+      .avatar-wrapper::before {
+        content: "";
+        position: absolute;
+        inset: -5px;
+        background: linear-gradient(
+          135deg,
+          var(--accent-blue),
+          var(--accent-purple)
+        );
+        border-radius: 50%;
+        z-index: -1;
+        animation: rotate 4s linear infinite;
+      }
+
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .avatar {
+        width: 100%;
+        height: 100%;
+        background: var(--card-bg);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden; /* لضمان بقاء الصورة دائرية */
+        border: 4px solid var(--primary-dark);
+      }
+
+      .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* لضمان عدم تمدد الصورة */
+      }
+
+      .info-content h2 {
+        color: #60a5fa;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .skills-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 15px;
+      }
+
+      .tag {
+        background: rgba(59, 130, 246, 0.1);
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        padding: 6px 14px;
+        border-radius: 10px;
+        font-size: 0.85rem;
+        color: #93c5fd;
+      }
+
+      .tag-ai {
+        border-color: var(--accent-purple);
+        color: #d8b4fe;
+        background: rgba(139, 92, 246, 0.1);
+      }
+
+      .spec-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .spec-list li {
+        margin-bottom: 12px;
+        padding-right: 25px;
+        position: relative;
+      }
+
+      .spec-list li::before {
+        content: "◈";
+        position: absolute;
+        right: 0;
+        color: var(--accent-blue);
+      }
+
+      .btn-back {
+        text-decoration: none;
+        color: var(--text-muted);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 20px;
+        font-weight: 500;
+        transition: 0.3s;
+      }
+
+      .btn-back:hover {
+        color: var(--accent-blue);
+      }
+
+      @media (max-width: 850px) {
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+        .profile-card {
+          position: relative;
+          top: 0;
+        }
+        .grad-text {
+          font-size: 1.8rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="container header">
+      <a href="index.html" class="btn-back">⬅ العودة للرئيسية</a>
+      <br />
+      <h1 class="grad-text">بطاقة تعريف الحسام حسن</h1>
+    </header>
+
+    <main class="container about-grid">
+      <aside class="profile-card card">
+        <div class="avatar-wrapper">
+          <div class="avatar">
+            <img src="my-photo.jpg" alt="الحسام حسن" />
+          </div>
+        </div>
+        <h2 style="margin: 10px 0; color: white">الحسام حسن</h2>
+        <p
+          style="
+            color: var(--accent-blue);
+            font-weight: bold;
+            font-size: 0.9rem;
+          "
+        >
+          خبير تربوي & مطور برمجيات ذكاء اصطناعي
+        </p>
+        <hr
+          style="
+            border: 0;
+            border-top: 1px solid var(--border-color);
+            margin: 20px 0;
+          "
+        />
+        <div style="text-align: right; font-size: 0.9rem">
+          <p style="margin-bottom: 8px">📍 مصر، الأزهري</p>
+          <p style="margin-bottom: 8px">🎓 بكالوريوس تربية</p>
+          <p>📧 hojhhgk@gmail.com</p>
+        </div>
+      </aside>
+
+      <section class="info-content">
+        <div class="card" style="margin-bottom: 25px">
+          <h2>الرؤية والرسالة 🚀</h2>
+          <p>
+            أنا <b>الحسام حسن</b>، أدمج بين العلم والتقنية لتقديم محتوى تعليمي
+            يليق بالجيل القادم. أسخر مهاراتي في
+            <b>البرمجة والذكاء الاصطناعي</b> لخدمة طلابي، سواء في التأسيس عبر
+            برنامج <b>بورتاج</b> أو في التخصص لطلاب الثانوية العامة.
+          </p>
+        </div>
+
+        <div class="card" style="margin-bottom: 25px">
+          <h2>المسار التعليمي والتربوي 🧠</h2>
+          <ul class="spec-list">
+            <li><b>مدرس أحياء:</b> متخصص لطلاب الصف الثالث الثانوي.</li>
+            <li><b>مدرس علوم متكاملة:</b> لطلاب الصف الأول والثاني الثانوي.</li>
+            <li>
+              <b>مدرس علوم إعدادي:</b> خبير في تبسيط المناهج بأساليب مبتكرة.
+            </li>
+            <li>
+              <b>أخصائي برنامج بورتاج (Portage):</b> للتنمية الشاملة للطفولة.
+            </li>
+            <li>
+              <b>خبير مقياس ستانفورد بينيه:</b> لتحليل القدرات العقلية والذكاء.
+            </li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>المهارات التقنية والذكاء الاصطناعي 💻</h2>
+          <div class="skills-tags">
+            <span class="tag tag-ai">AI Animation Specialist</span>
+            <span class="tag tag-ai">AI Prompt Engineering</span>
+            <span class="tag tag-ai">AI Video Production</span>
+            <span class="tag tag-ai">All Generative AI Courses</span>
+            <span class="tag">HTML5 / CSS3 / JavaScript</span>
+            <span class="tag">Python & Automation</span>
+            <span class="tag">Three.js (3D Web)</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer
+      class="container"
+      style="
+        margin-top: 40px;
+        text-align: center;
+        padding: 40px;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      "
+    >
+      <p>© 2026 الحسام حسن الأزهري | مبرمج بروح تربوية</p>
+    </footer>
+  </body>
+</html>
