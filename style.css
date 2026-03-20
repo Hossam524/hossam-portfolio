@@ -356,11 +356,30 @@ input:focus, textarea:focus{ border-color: rgba(46,229,157,.4); }
   .nav{ display:none; }
   .hide-sm{ display:none; }
 }
-.project .muted {
-  line-height: 1.8;
-  text-align: right;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;   /* عدد السطور */
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+/* xo.css - Hossam Hassan Edition */
+@import url('style.css'); /* استيراد ثيم الموقع الرئيسي */
+
+.wrap { display: grid; grid-template-columns: 320px 1fr; gap: 30px; margin-top: 20px; }
+.board { 
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; 
+    max-width: 420px; margin: 0 auto; background: var(--card2); 
+    padding: 15px; border-radius: 24px; border: 1px solid var(--border);
 }
+.cell { 
+    aspect-ratio: 1; background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; font-size: 3rem; color: var(--text); cursor: pointer;
+    transition: 0.2s; display: flex; align-items: center; justify-content: center;
+}
+.cell:hover:not(:disabled) { border-color: var(--accent); background: var(--card2); }
+.cell.win-pulse { background: linear-gradient(135deg, var(--accent), var(--accent2)) !important; color: white; animation: pulse 1s infinite; }
+.hint-flash { border: 2px solid var(--accent2) !important; background: rgba(46, 229, 157, 0.2); }
+
+.timer-box { background: rgba(255, 77, 77, 0.1); color: #ff4d4d; padding: 10px; border-radius: 12px; font-weight: bold; text-align: center; }
+.score-board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 20px 0; }
+.s-card { background: var(--card); padding: 10px; border-radius: 14px; text-align: center; border: 1px solid var(--border); }
+
+.result-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(8px); display: none; place-items: center; z-index: 100; }
+.result-overlay.show { display: grid; }
+
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+@media (max-width: 800px) { .wrap { grid-template-columns: 1fr; } }
