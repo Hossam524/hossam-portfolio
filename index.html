@@ -1,298 +1,591 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>حسام حسن الأزهري | Hossam Hassan</title>
-  <meta name="description" content="الموقع الشخصي لحسام حسن الأزهري - مطور ويب ومعلم أزهري وأخصائي تربوي. مشاريع ويب وألعاب." />
-  <link rel="stylesheet" href="style.css" />
-</head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>الحسام حسن الأزهري | المنصة الذكية</title>
 
-<body>
-  <div class="bg-glow"></div>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
 
-  <header class="container header">
-    <a class="brand" href="#top" aria-label="العودة للأعلى">
-      <span class="logo">H</span>
-      <span class="brand-text">
-        <strong>حسام حسن الأزهري | Hossam Hassan</strong>
-        <small>مطور ويب | معلم أزهري | أخصائي تربوي | مبرمج</small>
-      </span>
-    </a>
+    <style>
+      :root {
+        --primary: #2563eb;
+        --primary-dark: #1e40af;
+        --accent: #10b981;
+        --bg-light: #f8fafc;
+        --text-main: #1e293b;
+        --text-muted: #64748b;
+        --white: #ffffff;
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        --radius: 20px;
+      }
 
-    <nav class="nav" aria-label="التنقل">
-      <a href="#about">نبذة</a>
-      <a href="#skills">المهارات</a>
-      <a href="#projects">المشاريع</a>
-      <a href="#contact">تواصل</a>
-    </nav>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Tajawal", sans-serif;
+      }
 
-    <div class="header-actions">
-      <button id="themeBtn" class="btn ghost" type="button" aria-label="تبديل الثيم">
-        <span id="themeIcon" aria-hidden="true">🌙</span>
-        <span class="hide-sm">الوضع</span>
-      </button>
-      <a class="btn" href="#contact">تواصل الآن</a>
-    </div>
-  </header>
+      body {
+        background-color: var(--bg-light);
+        color: var(--text-main);
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+      }
 
-  <main id="top">
-    <section class="container hero">
-      <div class="hero-text">
-        <p class="pill">أهلاً 👋 أنا حسام حسن</p>
+      /* تحسين الهيدر */
+      .header {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        padding: 15px 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-        <h1>
-          ببني مواقع ويب عربية شيك
-          <span class="grad">وبحب التعليم الأزهري التفاعلي</span>
-        </h1>
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        color: var(--text-main);
+      }
 
-        <p class="sub">
-          مطور ويب ومعلم أزهري وأخصائي تربوي. بشتغل بـ <b>HTML</b> و<b>CSS</b> و<b>JavaScript</b> و<b>Python</b>،
-          وبحب أدمج التكنولوجيا بالتعليم عن طريق منصات ومشاريع وألعاب ويب مفيدة وبسيطة.
+      .logo {
+        background: linear-gradient(
+          135deg,
+          var(--primary),
+          var(--primary-dark)
+        );
+        color: white;
+        width: 45px;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        font-weight: 800;
+        font-size: 22px;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        overflow: hidden;
+      }
+
+      .brand-text strong {
+        display: block;
+        font-size: 18px;
+      }
+      .brand-text small {
+        color: var(--text-muted);
+        font-size: 11px;
+      }
+
+      .nav {
+        display: flex;
+        gap: 25px;
+      }
+      .nav a {
+        text-decoration: none;
+        color: var(--text-main);
+        font-weight: 500;
+        font-size: 15px;
+        transition: 0.3s;
+      }
+      .nav a:hover {
+        color: var(--primary);
+      }
+
+      /* البطاقات والأقسام */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* هيرو سكشن (Hero Section) */
+      .hero {
+        padding: 100px 0 60px;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 50px;
+        align-items: center;
+      }
+
+      .hero-text h1 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        line-height: 1.2;
+        margin: 20px 0;
+        color: #0f172a;
+      }
+
+      .grad {
+        background: linear-gradient(to left, var(--primary), #6366f1);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        -webkit-text-fill-color: transparent;
+        display: inline-block;
+      }
+
+      .pill {
+        display: inline-block;
+        background: rgba(37, 99, 235, 0.1);
+        color: var(--primary);
+        padding: 8px 20px;
+        border-radius: 50px;
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 14px 30px;
+        background: var(--primary);
+        color: white;
+        text-decoration: none;
+        border-radius: 14px;
+        font-weight: 700;
+        transition: 0.3s;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(37, 99, 235, 0.2);
+      }
+
+      .btn.ghost {
+        background: #f1f5f9;
+        color: var(--text-main);
+      }
+
+      /* المنصة الذكية (Portage Card) */
+      .featured-card {
+        background: var(--white);
+        border-radius: var(--radius);
+        padding: 40px;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(0, 0, 0, 0.03);
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        margin: 60px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .featured-card::after {
+        content: "";
+        position: absolute;
+        top: -50px;
+        left: -50px;
+        width: 150px;
+        height: 150px;
+        background: rgba(37, 99, 235, 0.05);
+        border-radius: 50%;
+      }
+
+      .list {
+        list-style: none;
+        margin: 20px 0;
+      }
+      .list li {
+        margin-bottom: 12px;
+        padding-right: 25px;
+        position: relative;
+      }
+      .list li::before {
+        content: "✓";
+        position: absolute;
+        right: 0;
+        color: var(--accent);
+        font-weight: bold;
+      }
+
+      /* المشاريع (Projects Grid) */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 25px;
+        margin-top: 40px;
+      }
+
+      .project-card {
+        background: white;
+        padding: 30px;
+        border-radius: var(--radius);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        transition: 0.4s;
+      }
+
+      .project-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--primary);
+        box-shadow: var(--shadow);
+      }
+
+      .tag {
+        font-size: 11px;
+        background: #f1f5f9;
+        padding: 4px 12px;
+        border-radius: 6px;
+        margin-left: 5px;
+        color: var(--text-muted);
+      }
+
+      /* الموبايل */
+      @media (max-width: 992px) {
+        .hero,
+        .featured-card {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+        .nav {
+          display: none;
+        }
+        .hero-text h1 {
+          font-size: 2.5rem;
+        }
+        .list li {
+          text-align: right;
+        }
+      }
+
+      /* نبضة الزر */
+      .pulse {
+        animation: pulse-animation 2s infinite;
+      }
+      @keyframes pulse-animation {
+        0% {
+          box-shadow: 0 0 0 0px rgba(37, 99, 235, 0.4);
+        }
+        100% {
+          box-shadow: 0 0 0 15px rgba(37, 99, 235, 0);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="header">
+      <a class="brand" href="index.html">
+        <div class="logo">
+          <img
+            src="my-photo.jpg"
+            alt="Logo"
+            style="width: 100%; height: 100%; object-fit: cover"
+          />
+        </div>
+        <div class="brand-text">
+          <strong>الحسام حسن الأزهري</strong>
+          <small>مطور ويب | أخصائي تربوي (Portage)</small>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <a href="about.html">نبذة</a>
+        <a href="index.html#smart-platform" style="color: var(--primary)"
+          >المنصة الذكية</a
+        >
+        <a href="index.html#projects">المشاريع</a>
+        <a href="contact.html">تواصل معي</a>
+      </nav>
+
+      <div class="header-actions">
+        <a
+          class="btn pulse"
+          href="https://al-hossam-hassan.github.io/-/"
+          target="_blank"
+          >دخول المنصة 🚀</a
+        >
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero" id="top">
+        <div class="hero-text">
+          <span class="pill">خبير تربوي ومطور برمجيات 🛠️</span>
+          <h1>
+            نحو طفولة واعية بـ <br /><span class="grad">حلول تقنية ذكية</span>
+          </h1>
+          <p
+            style="
+              color: var(--text-muted);
+              font-size: 18px;
+              margin-bottom: 30px;
+            "
+          >
+            أدمج خبرتي في القياس النفسي والتربوي بمهاراتي في تطوير الويب لبناء
+            أدوات تساعد في تقييم نمو الطفل وتطوير مهاراته من الميلاد حتى 9
+            سنوات.
+          </p>
+          <div class="cta">
+            <a
+              class="btn"
+              href="https://al-hossam-hassan.github.io/-/"
+              target="_blank"
+              >جرب المنصة الذكية 🚀</a
+            >
+            <a class="btn ghost" href="contact.html" style="margin-right: 15px"
+              >تواصل معي</a
+            >
+          </div>
+        </div>
+
+        <div style="text-align: center">
+          <div
+            style="
+              background: white;
+              padding: 40px;
+              border-radius: 30px;
+              box-shadow: var(--shadow);
+              border: 1px solid #f1f5f9;
+            "
+          >
+            <div
+              style="
+                width: 120px;
+                height: 120px;
+                background: #2563eb;
+                border-radius: 50%;
+                margin: 0 auto 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 40px;
+                font-weight: 800;
+                overflow: hidden;
+                border: 3px solid var(--primary);
+              "
+            >
+              <img
+                src="my-photo.jpg"
+                alt="الحسام حسن"
+                style="width: 100%; height: 100%; object-fit: cover"
+              />
+            </div>
+            <h2 style="margin-bottom: 5px">الحسام حسن</h2>
+            <p
+              style="
+                color: var(--primary);
+                font-weight: 700;
+                font-size: 14px;
+                margin-bottom: 15px;
+              "
+            >
+              Child Dev Specialist
+            </p>
+            <p
+              style="
+                font-style: italic;
+                color: var(--text-muted);
+                line-height: 1.6;
+              "
+            >
+              "نحول جداول التقييم الورقية المعقدة إلى تجربة رقمية سهلة لكل أب
+              وأم."
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="smart-platform" style="padding: 80px 0">
+        <div style="text-align: center; margin-bottom: 50px">
+          <h2 style="font-size: 2.2rem; margin-bottom: 10px">
+            المنصة الذكية للأطفال
+          </h2>
+          <p style="color: var(--text-muted)">
+            الأداة الرقمية الأولى المعتمدة على برنامج بورتاج (Portage) الدولي.
+          </p>
+        </div>
+        <div class="featured-card">
+          <div>
+            <h3
+              style="
+                font-size: 1.5rem;
+                color: var(--primary);
+                margin-bottom: 20px;
+              "
+            >
+              لماذا المنصة الذكية؟
+            </h3>
+            <p style="line-height: 1.7">
+              تم تصميم هذه المنصة لتكون دليلاً شاملاً للأمهات والأخصائيين
+              لمتابعة ٥ مجالات أساسية للنمو:
+            </p>
+            <ul class="list">
+              <li><strong>المجال المعرفي:</strong> تنمية ذكاء وفهم الطفل.</li>
+              <li>
+                <strong>المجال اللغوي:</strong> تطوير مهارات التواصل والنطق.
+              </li>
+              <li>
+                <strong>التنشئة الاجتماعية:</strong> بناء علاقة الطفل بالعالم.
+              </li>
+              <li><strong>الرعاية الذاتية:</strong> الاعتماد على النفس.</li>
+              <li>
+                <strong>المجال الحركي:</strong> المهارات الحركية الكبرى والصغرى.
+              </li>
+            </ul>
+            <a
+              class="btn"
+              href="https://al-hossam-hassan.github.io/-/"
+              target="_blank"
+              >ابدأ التقييم الرقمي الآن</a
+            >
+          </div>
+          <div
+            style="
+              background: #f8fbff;
+              border-radius: 20px;
+              padding: 40px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              border: 1px dashed #2563eb;
+            "
+          >
+            <div style="font-size: 50px; margin-bottom: 20px">📊</div>
+            <h4 style="margin-bottom: 10px; font-size: 20px">
+              إحصائيات ومقاييس دقيقة
+            </h4>
+            <p style="color: var(--text-muted); line-height: 1.6">
+              تعتمد المنصة على معايير ستانفورد بينيه لضمان دقة النتائج التربوية.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" style="padding-bottom: 100px">
+        <div style="text-align: center; margin-bottom: 40px">
+          <h2 style="font-size: 2rem">مشاريع تقنية وتعليمية</h2>
+          <p style="color: var(--text-muted)">
+            دمج التكنولوجيا بالتعليم لخلق تجربة فريدة.
+          </p>
+        </div>
+        <div class="grid">
+          <article class="project-card">
+            <span class="tag">Education</span>
+            <h3 style="margin: 15px 0 10px">طريقك للعلوم</h3>
+            <p
+              style="
+                color: var(--text-muted);
+                font-size: 14px;
+                margin-bottom: 20px;
+              "
+            >
+              تبسيط مناهج العلوم الإعدادية.
+            </p>
+            <a
+              href="https://al-hossam-hassan.github.io/Science-Mind/"
+              style="
+                color: var(--primary);
+                font-weight: 700;
+                text-decoration: none;
+              "
+              >استكشف المنصة ←</a
+            >
+          </article>
+          <article class="project-card">
+            <span class="tag">JavaScript</span>
+            <h3 style="margin: 15px 0 10px">كويز المعرفة</h3>
+            <p
+              style="
+                color: var(--text-muted);
+                font-size: 14px;
+                margin-bottom: 20px;
+              "
+            >
+              تطبيق "من سيربح المليون" بصيغة تعليمية.
+            </p>
+            <a
+              href="quiz.html"
+              style="
+                color: var(--primary);
+                font-weight: 700;
+                text-decoration: none;
+              "
+              >العب الآن ←</a
+            >
+          </article>
+          <article class="project-card">
+            <span class="tag">Logic Game</span>
+            <h3 style="margin: 15px 0 10px">لعبة XO الذكية</h3>
+            <p
+              style="
+                color: var(--text-muted);
+                font-size: 14px;
+                margin-bottom: 20px;
+              "
+            >
+              تحدي الذكاء المنطقي.
+            </p>
+            <a
+              href="xo.html"
+              style="
+                color: var(--primary);
+                font-weight: 700;
+                text-decoration: none;
+              "
+              >ابدأ التحدي ←</a
+            >
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer
+      style="
+        background: #0f172a;
+        color: white;
+        padding: 60px 0;
+        text-align: center;
+      "
+    >
+      <div class="container">
+        <img
+          src="my-photo.jpg"
+          alt="الحسام حسن"
+          style="
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 15px;
+            object-fit: cover;
+          "
+        />
+        <h2 style="margin-bottom: 10px">الحسام حسن الأزهري</h2>
+        <p style="color: #94a3b8; margin-bottom: 30px">
+          معلم علوم • متخصص بورتاج • مطور ويب
         </p>
-
-        <div class="cta">
-          <a class="btn" href="#projects">شوف المشاريع</a>
-          <a class="btn ghost" href="#contact">كلّمني</a>
+        <div
+          style="
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+          "
+        >
+          <a
+            href="mailto:hojhhgk@gmail.com"
+            style="color: white; text-decoration: none"
+            >Email</a
+          >
+          <a href="tel:01508178093" style="color: white; text-decoration: none"
+            >Phone</a
+          >
         </div>
-
-        <div class="quick">
-          <div class="q-card">
-            <span class="q-num">RTL</span>
-            <span class="q-label">تصميم عربي</span>
-          </div>
-          <div class="q-card">
-            <span class="q-num">Web</span>
-            <span class="q-label">مواقع وواجهات</span>
-          </div>
-          <div class="q-card">
-            <span class="q-num">Edu</span>
-            <span class="q-label">تعليم تفاعلي</span>
-          </div>
-        </div>
+        <p style="font-size: 12px; color: #475569">© 2026 جميع الحقوق محفوظة</p>
       </div>
-
-      <div class="hero-card" aria-label="بطاقة تعريف">
-        <div class="avatar" aria-hidden="true">HH</div>
-
-        <div class="hero-meta">
-          <h2>حسام حسن الأزهري</h2>
-          <p>Web Developer • Azhar Educator • Python • JS</p>
-        </div>
-
-        <div class="hero-links">
-          <a class="chip" href="https://linktr.ee/Hossam234" target="_blank" rel="noreferrer">Linktree</a>
-          <a class="chip" href="mailto:hojhhgk@gmail.com">Email</a>
-          <a class="chip" href="tel:01508178093">Call</a>
-        </div>
-
-        <div class="note">
-          أعمل على تطوير مشاريعي التعليمية والتقنية ونشرها بشكل مستمر.
-        </div>
-
-        <!-- ملاحظة للمطور: عند إضافة روابط المشاريع، أضف أزرار Live/Code داخل قسم المشاريع -->
-      </div>
-    </section>
-
-    <section id="about" class="container section">
-      <div class="section-head">
-        <h2>نبذة عني</h2>
-        <p>تعريف مختصر ومرتب عن خبرتي واهتمامي.</p>
-      </div>
-
-      <div class="grid two">
-        <div class="card">
-          <h3>مين أنا؟</h3>
-          <p>
-            أنا حسام حسن الأزهري، مطور ويب ومعلّم وأخصائي تربوي، مهتم بدمج التكنولوجيا بالتعليم الأزهري والتربوي.
-            أعمل على تطوير مواقع ويب باستخدام HTML وCSS وJavaScript وPython، وأسعى لتقديم
-            محتوى تعليمي مبسط وعملي يخدم الطلاب والمعلمين.
-          </p>
-          <ul class="list">
-            <li>تصميم واجهات عربية RTL بشكل نظيف</li>
-            <li>بناء صفحات ومواقع سريعة ومتجاوبة</li>
-            <li>اهتمام بالمشاريع التعليمية والألعاب التفاعلية</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>مؤهلات واهتمامات</h3>
-          <p>
-            حاصل على <b>بكالوريوس تربية</b>. لدي خبرة في
-            القياس والتقييم التربوي، وأستخدم أدوات
-            مثل Stanford Binet وPortage، بجانب مهارات تقنية مثل ICDL وتطوير الويب.
-          </p>
-          <div class="mini">
-            <span class="tag">بكالوريوس تربية</span>
-            <span class="tag">ICDL</span>
-            <span class="tag">Stanford Binet</span>
-            <span class="tag">Portage</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="skills" class="container section">
-      <div class="section-head">
-        <h2>المهارات</h2>
-        <p>مزيج بين المهارات التقنية والتربوية.</p>
-      </div>
-
-      <div class="grid three">
-        <div class="card">
-          <h3>تطوير الويب</h3>
-          <p class="muted">HTML • CSS • JavaScript</p>
-          <div class="bars">
-            <div class="bar"><span style="width: 80%"></span></div>
-            <div class="bar"><span style="width: 75%"></span></div>
-            <div class="bar"><span style="width: 70%"></span></div>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>Python</h3>
-          <p class="muted">Python • أساسيات Back-end</p>
-          <div class="bars">
-            <div class="bar"><span style="width: 70%"></span></div>
-            <div class="bar"><span style="width: 60%"></span></div>
-            <div class="bar"><span style="width: 55%"></span></div>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3>مهارات تربوية وأدوات</h3>
-          <ul class="list">
-            <li>ICDL</li>
-            <li>Stanford Binet</li>
-            <li>Portage</li>
-            <li>القياس والتقويم التربوي</li>
-            <li>التعليم التفاعلي</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects" class="container section">
-      <div class="section-head">
-        <h2>المشاريع</h2>
-        <p>هنا بعض مشاريعي، وبحدّثها أول بأول.</p>
-        <!-- ملاحظة للمطور: عند توفر روابط المشاريع، أضف Live/Code لكل مشروع -->
-      </div>
-
-      <div class="grid three">
-        <article class="card project">
-          <div class="proj-top">
-            <h3>منصة طريقك للعلوم</h3>
-            <span class="badge">Education</span>
-          </div>
-          <p class="muted">
-            منصة تعليمية تهدف إلى تبسيط العلوم وتقديم محتوى منظم ومفيد للطلاب.
-          </p>
-          <div class="mini">
-            <span class="tag">تعليم</span>
-            <span class="tag">محتوى</span>
-            <span class="tag">Web</span>
-          </div>
-          <p class="muted tiny">روابط المشروع ستتوفر قريبًا.</p>
-        </article>
-
-        <article class="card project">
-          <div class="proj-top">
-            <h3>لعبة ويب XO</h3>
-            <span class="badge">Game</span>
-          </div>
-
-          <p class="muted">
-            لعبة ويب تفاعلية تعتمد على الذكاء البسيط، تتيح اللعب ضد الكمبيوتر
-            أو بين لاعبين، مع مستويات صعوبة مختلفة وحفظ النتائج.
-          </p>
-
-          <div class="mini">
-            <span class="tag">JavaScript</span>
-            <span class="tag">HTML</span>
-            <span class="tag">CSS</span>
-            <span class="tag">Game</span>
-          </div>
-
-          <div class="actions">
-            <a class="btn sm" href="xo.html">🎮 تشغيل اللعبة</a>
-          </div>
-        </article>
-
-        <article class="card project">
-          <div class="proj-top">
-            <h3>كويز المعرفة (من سيربح المليون)</h3>
-            <span class="badge">Quiz</span>
-          </div>
-
-          <p class="muted">
-            كويز تفاعلي على نظام «من سيربح المليون»، بأسئلة متنوعة تشمل
-            ديني، معلومات عامة، ذكاء وتعليم، مع مراحل متدرجة ووسائل مساعدة.
-          </p>
-
-          <div class="mini">
-            <span class="tag">JavaScript</span>
-            <span class="tag">HTML</span>
-            <span class="tag">CSS</span>
-            <span class="tag">Quiz</span>
-          </div>
-          <div class="actions">
-            <a class="btn sm" href="quiz.html">🧠 تشغيل الكويز</a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section id="contact" class="container section">
-      <div class="section-head">
-        <h2>تواصل معي</h2>
-        <p>يسعدني التواصل والرد على الاستفسارات.</p>
-      </div>
-
-      <div class="grid two">
-        <div class="card">
-          <h3>بيانات التواصل</h3>
-          <p class="muted">روابط مباشرة وسريعة.</p>
-          <div class="stack">
-            <a class="link" href="mailto:hojhhgk@gmail.com">📩 hojhhgk@gmail.com</a>
-            <a class="link" href="tel:01508178093">📞 01508178093</a>
-            <a class="link" href="https://linktr.ee/Hossam234" target="_blank" rel="noreferrer">🔗 Linktree: Hossam234</a>
-          </div>
-        </div>
-
-        <form class="card form" id="contactForm">
-          <label>
-            اسمك
-            <input name="name" type="text" placeholder="مثال: أحمد" required />
-          </label>
-
-          <label>
-            بريدك
-            <input name="email" type="email" placeholder="name@email.com" required />
-          </label>
-
-          <label>
-            رسالتك
-            <textarea name="message" rows="4" placeholder="اكتب رسالتك هنا..." required></textarea>
-          </label>
-
-          <button class="btn" type="submit">إرسال</button>
-
-          <!-- ملاحظة للمطور: لو عايز إرسال فعلي لسيرفر، اربط الفورم بباك إند أو خدمة Forms -->
-        </form>
-      </div>
-    </section>
-
-    <footer class="container footer">
-      <p>© <span id="year"></span> حسام حسن الأزهري — Made with ❤️</p>
-      <a class="to-top" href="#top" aria-label="للأعلى">⬆️</a>
     </footer>
-  </main>
-
-  <script src="script.js"></script>
-</body>
+  </body>
 </html>
-  <script src="script.js"></script>
-</body>
-</html>
-
-
