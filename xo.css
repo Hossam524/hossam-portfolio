@@ -1,226 +1,192 @@
-:root{
-  --bg:#0b1220;
-  --card:rgba(255,255,255,.06);
-  --card2:rgba(255,255,255,.09);
-  --text:#eaf0ff;
-  --muted:rgba(234,240,255,.72);
-  --border:rgba(234,240,255,.14);
-  --accent:#7c5cff;
-  --accent2:#2ee59d;
-  --danger:#ff4d6d;
-  --radius:18px;
-  --shadow:0 18px 60px rgba(0,0,0,.35);
+/* xo.css - Hossam Hassan Professional Master Edition 2026 */
+
+:root {
+    --bg: #0b1220;
+    --card: rgba(255, 255, 255, 0.04);
+    --border: rgba(255, 255, 255, 0.1);
+    --accent: #7c5cff;
+    --accent-glow: rgba(124, 92, 255, 0.5);
+    --accent2: #2ee59d;
+    --text: #eaf0ff;
+    --shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-*{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
-body{
-  margin:0;
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Tahoma, Arial;
-  background: radial-gradient(1000px 600px at 20% 0%, rgba(124,92,255,.20), transparent 60%),
-              radial-gradient(900px 600px at 90% 10%, rgba(46,229,157,.16), transparent 55%),
-              var(--bg);
-  color:var(--text);
+.wrap { 
+    display: grid; 
+    /* تم تكبير العمود الجانبي ليعطي مساحة للمربعات */
+    grid-template-columns: 380px 1fr; 
+    gap: 50px; 
+    margin-top: 40px; 
+    align-items: start;
 }
 
-.top{
-  width:min(1100px, calc(100% - 32px));
-  margin:0 auto;
-  padding:18px 0 8px;
-  display:flex;
-  gap:12px;
-  align-items:center;
-  justify-content:space-between;
-}
-.back{
-  color:var(--text);
-  text-decoration:none;
-  border:1px solid var(--border);
-  background:rgba(255,255,255,.05);
-  padding:10px 12px;
-  border-radius:14px;
-}
-.title h1{ margin:0; font-size:20px; }
-.title p{ margin:6px 0 0; color:var(--muted); }
-
-.wrap{
-  width:min(1100px, calc(100% - 32px));
-  margin:0 auto;
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap:14px;
-  padding:10px 0 24px;
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
 }
 
-.panel{
-  border:1px solid var(--border);
-  background:var(--card);
-  border-radius:var(--radius);
-  padding:14px;
-  box-shadow:var(--shadow);
+/* لوحة اللعب - Board */
+.board { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 15px; 
+    width: 100%;
+    max-width: 520px; 
+    background: rgba(15, 23, 42, 0.6); 
+    padding: 20px; 
+    border-radius: 40px; 
+    border: 1px solid var(--border);
+    backdrop-filter: blur(20px);
+    box-shadow: var(--shadow), inset 0 0 30px rgba(255, 255, 255, 0.02);
 }
 
-.row{
-  display:grid;
-  grid-template-columns: 140px 1fr;
-  gap:10px;
-  align-items:center;
-  margin-bottom:10px;
-}
-.lbl{ color:var(--muted); font-size:13px; }
-
-select{
-  width:100%;
-  padding:10px 12px;
-  border-radius:14px;
-  border:1px solid var(--border);
-  background:rgba(255,255,255,.06);
-  color:var(--text);
-  outline:none;
-}
-select:focus{ border-color: rgba(46,229,157,.45); }
-
-.toggles{
-  grid-template-columns: 1fr 1fr;
-}
-.toggle{
-  display:flex;
-  gap:10px;
-  align-items:center;
-  color:var(--muted);
-  font-size:13px;
-  border:1px solid var(--border);
-  background:rgba(255,255,255,.05);
-  border-radius:14px;
-  padding:10px 12px;
-}
-.toggle input{ width:16px; height:16px; }
-
-.buttons{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin:12px 0;
+/* الخلية بتصميم Button-like ضخم */
+.cell { 
+    aspect-ratio: 1; 
+    background: rgba(255, 255, 255, 0.03); 
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 25px; 
+    font-size: 4rem; 
+    font-weight: 900;
+    color: var(--text); 
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.2);
 }
 
-.btn{
-  border:1px solid var(--border);
-  background: linear-gradient(135deg, rgba(124,92,255,.22), rgba(46,229,157,.18));
-  color:var(--text);
-  padding:10px 14px;
-  border-radius:14px;
-  cursor:pointer;
-  transition: transform .12s ease, border .2s, opacity .2s;
-}
-.btn:hover{ transform: translateY(-1px); border-color: rgba(124,92,255,.35); }
-.btn:active{ transform: translateY(0); }
-.btn.ghost{ background:transparent; }
-.btn.danger{ background: rgba(255,77,109,.12); border-color: rgba(255,77,109,.45); }
-.btn[disabled]{ opacity:.6; cursor:not-allowed; transform:none; }
-
-.score{
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap:10px;
-  margin:10px 0;
-}
-.s-card{
-  border:1px solid var(--border);
-  background:rgba(255,255,255,.05);
-  border-radius:16px;
-  padding:10px;
-  text-align:center;
-}
-.s-title{ color:var(--muted); font-size:12px; }
-.s-num{ font-size:22px; font-weight:900; margin-top:4px; }
-.s-sub{ color:var(--muted); font-size:12px; margin-top:2px; }
-
-.status{
-  border:1px solid var(--border);
-  background:rgba(255,255,255,.05);
-  border-radius:16px;
-  padding:12px;
-  color:var(--text);
-  line-height:1.7;
+.cell:hover:not(:disabled) { 
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--accent);
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
 }
 
-.tips{
-  margin-top:10px;
-  color:var(--muted);
-  font-size:12px;
+/* تلوين الرموز */
+.cell[data-value="X"] { color: var(--accent); text-shadow: 0 0 20px var(--accent-glow); }
+.cell[data-value="O"] { color: var(--accent2); text-shadow: 0 0 20px rgba(46, 229, 157, 0.4); }
+
+/* أنيميشن الفوز */
+.cell.win-pulse { 
+    background: linear-gradient(135deg, var(--accent), var(--accent2)) !important; 
+    color: white !important; 
+    text-shadow: none !important;
+    border: none;
+    animation: winNeon 0.6s ease-in-out infinite alternate;
 }
 
-.boardWrap{
-  border:1px solid var(--border);
-  background:linear-gradient(180deg, rgba(255,255,255,.06), transparent);
-  border-radius:var(--radius);
-  padding:14px;
-  box-shadow:var(--shadow);
-  position:relative;
+@keyframes winNeon {
+    from { transform: scale(1.05); box-shadow: 0 0 20px var(--accent); }
+    to { transform: scale(1.1); box-shadow: 0 0 40px var(--accent2); }
 }
 
-.board{
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap:10px;
-  max-width: 520px;
-  margin: 0 auto;
-}
-.cell{
-  aspect-ratio: 1/1;
-  border-radius: 18px;
-  border: 1px solid var(--border);
-  background: rgba(255,255,255,.05);
-  color: var(--text);
-  font-size: clamp(34px, 6vw, 64px);
-  font-weight: 900;
-  display:grid;
-  place-items:center;
-  cursor:pointer;
-  user-select:none;
-  transition: transform .12s ease, border .2s, background .2s;
-}
-.cell:hover{ transform: translateY(-1px); border-color: rgba(46,229,157,.35); }
-.cell:active{ transform: translateY(0); }
-.cell[disabled]{ opacity:.9; cursor:not-allowed; transform:none; }
-
-.cell.win{
-  border-color: rgba(124,92,255,.55);
-  background: linear-gradient(135deg, rgba(124,92,255,.18), rgba(46,229,157,.12));
-}
-.cell.hint{
-  border-color: rgba(46,229,157,.5);
+/* لوحة النتائج - تكبير المربعات */
+.score-board { 
+    display: grid; 
+    grid-template-columns: 1fr; 
+    gap: 20px; 
 }
 
-.result{
-  position:absolute;
-  inset:0;
-  display:none;
-  place-items:center;
-  background: rgba(0,0,0,.45);
-  border-radius: var(--radius);
-}
-.result.show{ display:grid; }
-.resultCard{
-  width:min(420px, calc(100% - 28px));
-  border:1px solid var(--border);
-  background:rgba(11,18,32,.9);
-  border-radius: 18px;
-  padding: 16px;
-  box-shadow: var(--shadow);
-}
-.resultCard h2{ margin:0 0 6px; }
-.resultCard p{ margin:0 0 12px; color: var(--muted); line-height: 1.8; }
-.resultBtns{ display:flex; gap:10px; flex-wrap:wrap; }
-
-.foot{
-  width:min(1100px, calc(100% - 32px));
-  margin:0 auto;
-  padding: 10px 0 24px;
-  color: var(--muted);
-  font-size: 12px;
+.s-card { 
+    background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.01));
+    padding: 30px 25px; /* مساحة داخلية أكبر */
+    border-radius: 30px; 
+    text-align: center; 
+    border: 1px solid var(--border);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 130px;
 }
 
-@media (max-width: 950px){
-  .wrap{ grid-template-columns: 1fr; }
+.s-card.player-a { border-right: 6px solid var(--accent); }
+.s-card.player-b { border-right: 6px solid var(--accent2); }
+.s-card.draw { border-right: 6px solid #64748b; }
+
+.s-card:hover { 
+    border-color: rgba(255,255,255,0.2);
+    transform: translateX(-10px);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* الأرقام (النتائج) - تصميم كريستالي عريض */
+.s-card b { 
+    display: inline-block; 
+    width: 100%; 
+    font-size: 40px; /* تكبير الخط بشكل ملحوظ */
+    margin-top: 10px; 
+    font-weight: 900;
+    background-image: linear-gradient(90deg, #ffffff, var(--accent2));
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
+}
+
+.s-card span {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    opacity: 0.7;
+    letter-spacing: 1px;
+}
+
+/* التايمر العصري الضخم */
+.timer-box { 
+    background: rgba(255, 77, 77, 0.1); 
+    color: #ff4d4d; 
+    padding: 22px; 
+    border-radius: 25px; 
+    font-weight: 900; 
+    text-align: center; 
+    border: 1px solid rgba(255, 77, 77, 0.2);
+    font-size: 1.6rem;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(255, 77, 77, 0.1);
+}
+
+/* Overlay النتيجة */
+.result-overlay { 
+    position: fixed; 
+    inset: 0; 
+    background: rgba(5, 10, 21, 0.9); 
+    backdrop-filter: blur(20px); 
+    display: none; 
+    place-items: center; 
+    z-index: 9999; 
+}
+
+.result-overlay.show { display: grid; }
+
+.result-content {
+    background: var(--bg);
+    padding: 60px;
+    border-radius: 40px;
+    border: 1px solid var(--accent);
+    text-align: center;
+    box-shadow: 0 0 60px rgba(124, 92, 255, 0.3);
+    animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes popIn {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* التجاوب مع الموبايل */
+@media (max-width: 900px) { 
+    .wrap { grid-template-columns: 1fr; gap: 30px; } 
+    .score-board { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .s-card { padding: 15px 5px; min-height: 100px; border-right: none; border-bottom: 4px solid var(--border); }
+    .s-card.player-a { border-bottom-color: var(--accent); }
+    .s-card.player-b { border-bottom-color: var(--accent2); }
+    .s-card b { font-size: 24px; }
+    .board { max-width: 100%; }
+    .cell { font-size: 2.8rem; }
 }
