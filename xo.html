@@ -1,126 +1,183 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>لعبة XO | حسام حسن الأزهري</title>
-  <meta name="description" content="لعبة XO تفاعلية: ضد الكمبيوتر أو لاعبين، مستويات صعوبة، نتائج محفوظة." />
-  <link rel="stylesheet" href="xo.css" />
-</head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>تحدي XO الذكي | حسام حسن</title>
+    <meta
+      name="description"
+      content="لعبة XO تفاعلية مطورة بواسطة حسام حسن - نظام ذكاء اصطناعي وتحدي وقت."
+    />
 
-<body>
-  <header class="top">
-    <a class="back" href="index.html" aria-label="العودة للموقع">⬅️ الرجوع للموقع</a>
-    <div class="title">
-      <h1>لعبة XO</h1>
-      <p>ضد الكمبيوتر أو لاعبين — نتائج محفوظة</p>
-    </div>
-  </header>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="xo.css" />
+  </head>
 
-  <main class="wrap">
-    <section class="panel" aria-label="لوحة الإعدادات">
-      <div class="row">
-        <label class="lbl" for="mode">وضع اللعب</label>
-        <select id="mode">
-          <option value="ai">ضد الكمبيوتر</option>
-          <option value="pvp">لاعبين (2 Players)</option>
-        </select>
+  <body>
+    <div class="bg-glow"></div>
+
+    <header class="header container">
+      <nav class="nav">
+        <a href="index.html" class="btn ghost sm">⬅️ العودة للرئيسية</a>
+        <a
+          href="https://al-hossam-hassan.github.io/-/"
+          target="_blank"
+          class="btn sm"
+          style="background: var(--accent2); color: #0b1220"
+          >المنصة الذكية 🚀</a
+        >
+      </nav>
+      <div class="brand-text" style="text-align: center">
+        <h1 class="grad" style="font-size: 24px; margin: 0">تحدي XO الذكي</h1>
+        <small class="muted">نمّ ذكاءك المنطقي من خلال اللعب</small>
       </div>
+    </header>
 
-      <div class="row" id="difficultyRow">
-        <label class="lbl" for="difficulty">مستوى الكمبيوتر</label>
-        <select id="difficulty">
-          <option value="easy">سهل</option>
-          <option value="medium" selected>متوسط</option>
-          <option value="hard">صعب</option>
-        </select>
-      </div>
-
-      <div class="row">
-        <label class="lbl" for="playerMark">اختيار علامتك</label>
-        <select id="playerMark">
-          <option value="X" selected>X</option>
-          <option value="O">O</option>
-        </select>
-      </div>
-
-      <div class="row">
-        <label class="lbl" for="firstTurn">مين يبدأ؟</label>
-        <select id="firstTurn">
-          <option value="player" selected>أنا</option>
-          <option value="other">الخصم</option>
-          <option value="random">عشوائي</option>
-        </select>
-      </div>
-
-      <div class="row toggles">
-        <label class="toggle">
-          <input type="checkbox" id="sound" checked />
-          <span>صوت خفيف</span>
-        </label>
-
-        <label class="toggle">
-          <input type="checkbox" id="hints" checked />
-          <span>تلميحات (Highlight)</span>
-        </label>
-      </div>
-
-      <div class="buttons">
-        <button id="newGame" class="btn">لعبة جديدة</button>
-        <button id="resetRound" class="btn ghost">إعادة الجولة</button>
-        <button id="resetAll" class="btn danger">مسح النتائج</button>
-      </div>
-
-      <div class="score" aria-label="لوحة النتائج">
-        <div class="s-card">
-          <div class="s-title" id="nameA">اللاعب A</div>
-          <div class="s-num" id="scoreA">0</div>
-          <div class="s-sub" id="markA">X</div>
+    <main class="container wrap">
+      <aside
+        class="panel card"
+        style="padding: 25px; display: flex; flex-direction: column; gap: 20px"
+      >
+        <div id="timerDisplay" class="timer-box">
+          ⏱️ المتبقي: <span id="seconds">05</span> ثانية
         </div>
-        <div class="s-card">
-          <div class="s-title">تعادل</div>
-          <div class="s-num" id="scoreD">0</div>
-          <div class="s-sub">—</div>
-        </div>
-        <div class="s-card">
-          <div class="s-title" id="nameB">اللاعب B</div>
-          <div class="s-num" id="scoreB">0</div>
-          <div class="s-sub" id="markB">O</div>
-        </div>
-      </div>
 
-      <div class="status" role="status" aria-live="polite" id="status">
-        جهّز الإعدادات واضغط "لعبة جديدة".
-      </div>
+        <div class="settings-group">
+          <div class="row" style="margin-bottom: 15px">
+            <label class="tiny muted" style="display: block; margin-bottom: 8px"
+              >وضع اللعب</label
+            >
+            <select
+              id="mode"
+              class="input"
+              style="width: 100%; cursor: pointer"
+            >
+              <option value="ai">🤖 تحدي الذكاء الاصطناعي</option>
+              <option value="pvp">👥 لاعبين (تنافس محلي)</option>
+            </select>
+          </div>
 
-      <div class="tips">
-        <strong>اختصار:</strong>  
-        استخدم الأسهم + Enter للعب من الكيبورد.
-      </div>
-    </section>
+          <div class="row" id="difficultyRow" style="margin-bottom: 15px">
+            <label class="tiny muted" style="display: block; margin-bottom: 8px"
+              >مستوى الصعوبة</label
+            >
+            <select
+              id="difficulty"
+              class="input"
+              style="width: 100%; cursor: pointer"
+            >
+              <option value="easy">سهل</option>
+              <option value="medium" selected>متوسط</option>
+              <option value="hard">🔥 مستحيل (Minimax)</option>
+            </select>
+          </div>
 
-    <section class="boardWrap" aria-label="لوحة اللعبة">
-      <div class="board" id="board" role="grid" aria-label="لوحة XO">
-        <!-- 9 خلايا من JS -->
-      </div>
-
-      <div class="result" id="result" aria-hidden="true">
-        <div class="resultCard">
-          <h2 id="resultTitle">انتهت الجولة</h2>
-          <p id="resultText">—</p>
-          <div class="resultBtns">
-            <button class="btn" id="playAgain">العب تاني</button>
-            <button class="btn ghost" id="closeResult">إغلاق</button>
+          <div class="toggles stack" style="gap: 12px">
+            <label
+              class="toggle btn ghost sm"
+              style="width: 100%; justify-content: start"
+            >
+              <input
+                type="checkbox"
+                id="sound"
+                checked
+                style="margin-left: 10px"
+              />
+              <span>🔊 مؤثرات صوتية</span>
+            </label>
+            <label
+              class="toggle btn ghost sm"
+              style="width: 100%; justify-content: start"
+            >
+              <input type="checkbox" id="timerMode" style="margin-left: 10px" />
+              <span>⚡ تحدي الثواني (5ث)</span>
+            </label>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
 
-  <footer class="foot">
-    <span>© <span id="year"></span> حسام حسن الأزهري</span>
-  </footer>
+        <hr style="border: 0; border-top: 1px solid var(--border)" />
 
-  <script src="xo.js"></script>
-</body>
+        <div class="score-board">
+          <div class="s-card" style="border-right: 4px solid var(--accent)">
+            <span class="tiny muted" id="nameA">أنت (X)</span>
+            <b id="scoreA">0</b>
+          </div>
+          <div class="s-card">
+            <span class="tiny muted">تعادل</span>
+            <b id="scoreD">0</b>
+          </div>
+          <div class="s-card" style="border-right: 4px solid var(--accent2)">
+            <span class="tiny muted" id="nameB">الكمبيوتر (O)</span>
+            <b id="scoreB">0</b>
+          </div>
+        </div>
+
+        <div
+          id="status"
+          class="note tiny"
+          style="text-align: center; border-style: solid"
+        >
+          جاهز لبدء التحدي؟
+        </div>
+
+        <div class="buttons-grid stack" style="gap: 10px">
+          <button
+            id="newGame"
+            class="btn"
+            style="width: 100%; background: var(--accent); color: white"
+          >
+            لعبة جديدة
+          </button>
+          <button
+            id="getHint"
+            class="btn ghost sm"
+            style="
+              width: 100%;
+              border-color: var(--accent2);
+              color: var(--accent2);
+            "
+          >
+            💡 تلميحة ذكية
+          </button>
+          <button
+            id="resetAll"
+            class="btn ghost sm"
+            style="width: 100%; opacity: 0.5"
+          >
+            مسح السجل
+          </button>
+        </div>
+      </aside>
+
+      <section class="game-container">
+        <div class="board" id="board" role="grid"></div>
+
+        <div class="result-overlay" id="result">
+          <div class="result-content">
+            <div style="font-size: 60px; margin-bottom: 10px">🏆</div>
+            <h2 id="resultTitle" class="grad">انتهت الجولة!</h2>
+            <p id="resultText" class="muted" style="margin-bottom: 25px">—</p>
+            <div class="stack" style="gap: 10px">
+              <button class="btn" id="playAgain" style="width: 100%">
+                جولة جديدة
+              </button>
+              <button class="btn ghost" id="closeResult" style="width: 100%">
+                إغلاق
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="container footer" style="margin-top: 40px">
+      <p>© 2026 حسام حسن الأزهري | مبرمج وأخصائي تربوي</p>
+    </footer>
+
+    <script src="xo.js"></script>
+  </body>
 </html>
